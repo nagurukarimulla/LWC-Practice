@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Continuation Example">
+        <div if:true={statusBool} class="slds-theme_info">
+            Long running process. So, do not press Start Request multiple times.
+        </div>
+        <lightning-button variant="brand" label="Start Request" title="Start Request" onclick={startRequest}></lightning-button>
+        <div id="result">{result}</div>
+    </lightning-card>
+</template>

@@ -1,0 +1,35 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item size="12">
+            <div class="slds-box">
+                <h1>Account List</h1>
+                <template lwc:if={accounts}>
+                    <lightning-layout multiple-rows>
+                        <template for:each={accounts} for:item="account">
+                            <lightning-layout-item key={account.Id} size="6">
+                                <div class="slds-box slds-var-p-around_medium">
+                                    <p><strong>Name:</strong> {account.Name}</p>
+                                    <p><strong>Industry:</strong> {account.Industry}</p>
+                                    <p><strong>Annual Revenue:</strong> {account.AnnualRevenue}</p>
+                                    <div class="slds-var-p-top_medium">
+                                        <lightning-button-group>
+                                            <lightning-button label="Create" title="Create" variant="brand" onclick={handleCreate}></lightning-button>
+                                            <template if:true={isAccountCreatorVisible}>
+                                                <c-account-creator></c-account-creator>
+                                            </template>
+                                            <lightning-button label="Edit" title="Edit" variant="success" onclick={handleEdit}></lightning-button>
+                                            <lightning-button label="Delete" title="Delete" variant="destructive" onclick={handleDelete}></lightning-button>
+                                        </lightning-button-group>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+                <template if:false={accounts}>
+                    <p>No accounts found.</p>
+                </template>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
